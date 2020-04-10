@@ -1,0 +1,5 @@
+rootProject.name = 'springnow'
+include 'client'
+include 'common'
+include 'server'
+
