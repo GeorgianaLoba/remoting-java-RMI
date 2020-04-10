@@ -1,4 +1,4 @@
-package spring;
+package springnow;
 
 
 public class ClientApp {

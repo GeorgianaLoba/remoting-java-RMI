@@ -1,10 +1,11 @@
-package spring.repository;
+package springnow.repository;
 
 
-import ro.ubb.rpc.domain.BaseEntity;
-import ro.ubb.rpc.domain.exceptions.ValidatorException;
-import ro.ubb.rpc.domain.validators.Validator;
-import ro.ubb.rpc.repository.adapters.Adapter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcOperations;
+import rpc.domain.BaseEntity;
+import rpc.domain.validators.Validator;
+import springnow.repository.adapters.Adapter;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -13,15 +14,8 @@ import java.util.HashSet;
 import java.util.Optional;
 
 public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> implements InterfaceRepository<ID, T> {
-    private Validator<T> validator;
-    private Connection connection;
+    @Autowired
     private Adapter<ID, T> adapter;
-
-    public DBRepository(Validator<T> validator, Connection connection, Adapter<ID, T> adapter) {
-        this.validator = validator;
-        this.connection = connection;
-        this.adapter = adapter;
-    }
 
     @Override
     public Optional<T> findOne(ID id) {
@@ -29,7 +23,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
             throw new IllegalArgumentException("The ID must not be null");
         }
         try {
-            return adapter.findOne(connection, id);
+            return adapter.findOne(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -39,7 +33,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     @Override
     public Iterable<T> findALL() {
         try {
-            return new HashSet<>(adapter.findAll(connection));
+            return new HashSet<>(adapter.findAll());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -51,9 +45,8 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
         if (entity == null) {
             throw new IllegalArgumentException("The entity must not be null");
         }
-        validator.validate(entity);
         try {
-            return adapter.add(connection, entity);
+            return adapter.add(entity);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,7 +59,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
             throw new IllegalArgumentException("The ID must not be null");
         }
         try {
-            return adapter.delete(connection, id);
+            return adapter.delete(id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,9 +72,8 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
         if (entity == null) {
             throw new IllegalArgumentException("The entity must not be null");
         }
-        validator.validate(entity);
         try {
-            return adapter.update(connection, entity);
+            return adapter.update(entity);
         } catch (SQLException e) {
             e.printStackTrace();
         }

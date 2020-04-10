@@ -1,8 +1,9 @@
-package spring.service;
+package springnow.service;
 
 
-import ro.ubb.rpc.domain.Movie;
-import ro.ubb.rpc.repository.InterfaceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import rpc.domain.Movie;
+import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -12,12 +13,8 @@ import java.util.stream.StreamSupport;
 
 
 public class MovieService {
+    @Autowired
     private InterfaceRepository<Long, Movie> repository;
-
-    public MovieService(InterfaceRepository<Long,Movie> repository)
-    {
-        this.repository=repository;
-    }
 
     public Set<Movie> getAllMovies() throws SQLException {
         Iterable<Movie> movies=repository.findALL();

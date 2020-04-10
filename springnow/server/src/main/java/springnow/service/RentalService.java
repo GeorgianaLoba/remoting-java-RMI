@@ -1,9 +1,11 @@
-package spring.service;
+package springnow.service;
 
-import ro.ubb.rpc.domain.Client;
-import ro.ubb.rpc.domain.Movie;
-import ro.ubb.rpc.domain.Rental;
-import ro.ubb.rpc.repository.InterfaceRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import rpc.domain.Client;
+import rpc.domain.Movie;
+import rpc.domain.Rental;
+import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -13,15 +15,13 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class RentalService {
+    @Autowired
     private InterfaceRepository<Long, Rental> repository;
+    @Autowired
     private InterfaceRepository<Long, Movie> movieRepository;
+    @Autowired
     private InterfaceRepository<Long, Client> clientRepository;
 
-    public RentalService(InterfaceRepository<Long, Rental> repository, InterfaceRepository<Long, Movie> movieRepository, InterfaceRepository<Long, Client> clientRepository) {
-        this.repository = repository;
-        this.movieRepository = movieRepository;
-        this.clientRepository = clientRepository;
-    }
 
     public Set<Rental> getAllRentals() throws SQLException {
         Iterable<Rental> rentals = repository.findALL();

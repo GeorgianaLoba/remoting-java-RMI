@@ -1,4 +1,4 @@
-package spring.ui;
+package springnow.ui;
 
 public class Console {
     //TODO

@@ -1,4 +1,4 @@
-package spring.repository;
+package springnow.repository;
 
 
 import ro.ubb.rpc.domain.BaseEntity;

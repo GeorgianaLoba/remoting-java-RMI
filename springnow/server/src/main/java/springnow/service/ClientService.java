@@ -1,12 +1,13 @@
-package spring.service;
+package springnow.service;
 
 //import ro.ubb.movie.domain.Client;
 //import ro.ubb.movie.repository.InterfaceRepository;
 
 
 
-import ro.ubb.rpc.domain.Client;
-import ro.ubb.rpc.repository.InterfaceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import rpc.domain.Client;
+import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
 import java.util.Set;
@@ -14,11 +15,9 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class ClientService {
+    @Autowired
     private InterfaceRepository<Long, Client> repository;
 
-    public ClientService(InterfaceRepository<Long, Client> repository) {
-        this.repository = repository;
-    }
 
     public void addClient(Client client)
     {
