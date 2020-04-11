@@ -2,13 +2,11 @@ package springnow.repository;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcOperations;
-import rpc.domain.BaseEntity;
-import rpc.domain.validators.Validator;
+import springnow.domain.BaseEntity;
+import springnow.domain.exceptions.ValidatorException;
 import springnow.repository.adapters.Adapter;
 
 import java.io.Serializable;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Optional;
@@ -41,7 +39,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     }
 
     @Override
-    public Optional<T> save(T entity) throws ValidatorException{
+    public Optional<T> save(T entity) throws ValidatorException {
         if (entity == null) {
             throw new IllegalArgumentException("The entity must not be null");
         }

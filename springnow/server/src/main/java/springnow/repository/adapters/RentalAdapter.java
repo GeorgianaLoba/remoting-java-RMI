@@ -4,13 +4,13 @@ package springnow.repository.adapters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import rpc.domain.Rental;
-import rpc.domain.validators.RentalValidator;
+import springnow.domain.Rental;
+import springnow.domain.validators.RentalValidator;
 
 import java.sql.*;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 public class RentalAdapter implements Adapter<Long, Rental> {
     @Autowired
@@ -19,7 +19,7 @@ public class RentalAdapter implements Adapter<Long, Rental> {
     JdbcOperations jdbcOperations;
 
     @Override
-    public Set<Rental> findAll() throws SQLException {
+    public List<Rental> findAll() throws SQLException {
         String sql="select * from rentals";
         return jdbcOperations.query(sql, (rs,row)->makeRental(rs));
     }
@@ -46,6 +46,7 @@ public class RentalAdapter implements Adapter<Long, Rental> {
     @Override
     public Optional<Rental> add(Rental rental) throws SQLException {
         String sql = "insert into rentals (id,movieId, clientID) values(?,?,?)";
+        rentalValidator.validate(rental);
         jdbcOperations.update(sql, rental.getId(), rental.getMovieId(), rental.getClientId());
         return Optional.of(rental);
     }
@@ -53,6 +54,7 @@ public class RentalAdapter implements Adapter<Long, Rental> {
     @Override
     public Optional<Rental> update(Rental rental) throws SQLException {
         String sql = "update rentals set movieId=?, clientID=? where id=?";
+        rentalValidator.validate(rental);
         jdbcOperations.update(sql,rental.getMovieId(), rental.getClientId(), rental.getId());
         return Optional.of(rental);
     }

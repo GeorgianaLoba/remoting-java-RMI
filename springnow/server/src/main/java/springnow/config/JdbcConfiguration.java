@@ -22,7 +22,7 @@ public class JdbcConfiguration {
         BasicDataSource basicDataSource=new BasicDataSource();
         basicDataSource.setUrl("jdbc:postgresql://localhost:5432/moviestore");
         basicDataSource.setUsername("postgres");
-        basicDataSource.setPassword("admin");
+        basicDataSource.setPassword("geo");
         basicDataSource.setInitialSize(2);
         return basicDataSource;
     }

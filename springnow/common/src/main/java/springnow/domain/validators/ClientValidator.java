@@ -1,8 +1,8 @@
-package rpc.domain.validators;
+package springnow.domain.validators;
 
 
-import ro.ubb.rpc.domain.Client;
-import ro.ubb.rpc.domain.exceptions.ValidatorException;
+import springnow.domain.Client;
+import springnow.domain.exceptions.ValidatorException;
 
 public class ClientValidator implements Validator<Client> {
     @Override

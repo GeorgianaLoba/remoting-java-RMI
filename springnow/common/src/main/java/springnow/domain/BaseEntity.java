@@ -1,4 +1,4 @@
-package rpc.domain;
+package springnow.domain;
 /**
  * @author radu.
  */

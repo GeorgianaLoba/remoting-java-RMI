@@ -1,8 +1,8 @@
 package springnow.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Rental;
-import rpc.service.CommonRentalService;
+import springnow.domain.Rental;
+import springnow.service.CommonRentalService;
 
 import java.sql.SQLException;
 import java.util.Set;

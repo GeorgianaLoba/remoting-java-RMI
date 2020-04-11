@@ -2,14 +2,12 @@ package springnow.repository.adapters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import ro.ubb.rpc.domain.Movie;
-import rpc.domain.Movie;
-import rpc.domain.validators.MovieValidator;
+import springnow.domain.Movie;
+import springnow.domain.validators.MovieValidator;
 
 import java.sql.*;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class MovieAdapter implements Adapter<Long,Movie > {
     @Autowired
@@ -18,7 +16,7 @@ public class MovieAdapter implements Adapter<Long,Movie > {
     MovieValidator movieValidator;
 
     @Override
-    public Set<Movie> findAll() throws SQLException {
+    public List<Movie> findAll() throws SQLException {
         String sql="select * from movies";
         return jdbcOperations.query(sql, (rs, row)->makeMovie(rs));
     }

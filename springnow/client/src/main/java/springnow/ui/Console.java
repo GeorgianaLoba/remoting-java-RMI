@@ -1,14 +1,13 @@
 package springnow.ui;
 
-import rpc.domain.Client;
-import rpc.domain.Movie;
-import rpc.domain.Rental;
-import rpc.service.CommonClientService;
-import rpc.service.CommonMovieService;
-import rpc.service.CommonRentalService;
+import springnow.domain.Client;
+import springnow.domain.Movie;
+import springnow.domain.Rental;
+import springnow.service.CommonClientService;
+import springnow.service.CommonMovieService;
+import springnow.service.CommonRentalService;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 

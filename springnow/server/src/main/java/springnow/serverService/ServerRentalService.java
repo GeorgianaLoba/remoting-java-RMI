@@ -1,28 +1,26 @@
 package springnow.serverService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Rental;
-import rpc.service.CommonRentalService;
+import springnow.domain.Rental;
+import springnow.service.CommonRentalService;
 import springnow.service.RentalService;
 
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
 
 public class ServerRentalService implements CommonRentalService {
     @Autowired
     private RentalService rentalService;
 
     @Override
-    public void deleteRentalsOfMovie(Long movieId) {
+    public void deleteRentalsOfMovie(Long movieId) throws SQLException {
         rentalService.deleteRentalsOfClient(movieId);
     }
 
     @Override
-    public void deleteRentalsofClient(Long clientId) {
+    public void deleteRentalsofClient(Long clientId) throws SQLException {
         rentalService.deleteRentalsOfClient(clientId);
     }
 
@@ -42,7 +40,7 @@ public class ServerRentalService implements CommonRentalService {
     }
 
     @Override
-    public Set<Rental> getAllRentals() throws SQLException {
+    public List<Rental> getAllRentals() throws SQLException {
         return rentalService.getAllRentals();
     }
 }

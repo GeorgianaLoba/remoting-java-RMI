@@ -1,22 +1,16 @@
-package rpc.service;
+package springnow.service;
 
-//import ro.ubb.rpc.domain.Movie;
 
-import rpc.domain.Movie;
+import springnow.domain.Movie;
 
 import java.sql.SQLException;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
 public interface CommonMovieService {
-
-
-
-
     void addMovie(Movie movie);
     void deleteMovie(Long id) throws SQLException;
     void updateMovie(Movie movie);
     boolean isPresent(Long id);
-    Set<Movie> getAll() throws SQLException;
+    List<Movie> getAll() throws SQLException;
 }
 

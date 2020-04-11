@@ -2,10 +2,12 @@ package springnow.serverService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Movie;
-import rpc.service.CommonMovieService;
+import springnow.domain.Movie;
+import springnow.service.CommonMovieService;
 import springnow.service.MovieService;
 
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
 public class ServerMovieService implements CommonMovieService {
@@ -19,7 +21,7 @@ public class ServerMovieService implements CommonMovieService {
     }
 
     @Override
-    public void deleteMovie(Long id) {
+    public void deleteMovie(Long id) throws SQLException{
         movieService.deleteMovie(id);
     }
 
@@ -34,8 +36,7 @@ public class ServerMovieService implements CommonMovieService {
     }
 
     @Override
-    public Set<Movie> getAll(){
+    public List<Movie> getAll() throws SQLException {
         return movieService.getAllMovies();
-
     }
 }

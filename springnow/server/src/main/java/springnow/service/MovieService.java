@@ -2,11 +2,12 @@ package springnow.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Movie;
+import springnow.domain.Movie;
 import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -16,9 +17,9 @@ public class MovieService {
     @Autowired
     private InterfaceRepository<Long, Movie> repository;
 
-    public Set<Movie> getAllMovies() throws SQLException {
+    public List<Movie> getAllMovies() throws SQLException {
         Iterable<Movie> movies=repository.findALL();
-        return StreamSupport.stream(movies.spliterator(),false).collect(Collectors.toSet());
+        return StreamSupport.stream(movies.spliterator(),false).collect(Collectors.toList());
     }
 
     public void addMovie (Movie movie){

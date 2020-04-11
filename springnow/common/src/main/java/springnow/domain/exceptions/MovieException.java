@@ -1,4 +1,4 @@
-package rpc.domain.exceptions;
+package springnow.domain.exceptions;
 
 public class MovieException extends RuntimeException {
 

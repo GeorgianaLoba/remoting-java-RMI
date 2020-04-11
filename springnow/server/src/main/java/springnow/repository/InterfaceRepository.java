@@ -1,8 +1,9 @@
 package springnow.repository;
 
 
-import ro.ubb.rpc.domain.BaseEntity;
-import ro.ubb.rpc.domain.exceptions.ValidatorException;
+
+import springnow.domain.BaseEntity;
+import springnow.domain.exceptions.ValidatorException;
 
 import java.util.Optional;
 

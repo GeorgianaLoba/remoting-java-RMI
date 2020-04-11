@@ -3,15 +3,16 @@ package springnow.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.rmi.RmiServiceExporter;
-import rpc.domain.Client;
-import rpc.domain.Movie;
-import rpc.domain.Rental;
-import rpc.domain.validators.ClientValidator;
-import rpc.domain.validators.MovieValidator;
-import rpc.domain.validators.RentalValidator;
-import rpc.service.CommonClientService;
-import rpc.service.CommonMovieService;
-import rpc.service.CommonRentalService;
+import org.springframework.stereotype.Component;
+import springnow.domain.Client;
+import springnow.domain.Movie;
+import springnow.domain.Rental;
+import springnow.domain.validators.ClientValidator;
+import springnow.domain.validators.MovieValidator;
+import springnow.domain.validators.RentalValidator;
+import springnow.service.CommonClientService;
+import springnow.service.CommonMovieService;
+import springnow.service.CommonRentalService;
 import springnow.repository.DBRepository;
 import springnow.repository.InterfaceRepository;
 import springnow.repository.adapters.ClientAdapter;
@@ -85,6 +86,7 @@ public class ServerConfiguration {
         return new RentalValidator();
     }
 
+
     @Bean
     MovieAdapter movieAdapter(){
         return new MovieAdapter();
@@ -129,8 +131,5 @@ public class ServerConfiguration {
     RentalService rentalService(){
         return new RentalService();
     }
-
-
-
 
 }

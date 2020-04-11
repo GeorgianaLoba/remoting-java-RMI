@@ -3,14 +3,13 @@ package springnow.serverService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Client;
-import rpc.service.CommonClientService;
+import springnow.domain.Client;
+import springnow.service.CommonClientService;
 import springnow.service.ClientService;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 
 public class ServerClientService implements CommonClientService {
     @Autowired
@@ -38,7 +37,7 @@ public class ServerClientService implements CommonClientService {
     }
 
     @Override
-    public Set<Client> getAllClients() throws SQLException {
+    public List<Client> getAllClients() throws SQLException {
         return clientService.getAllClients();
     }
 }

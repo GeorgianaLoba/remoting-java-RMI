@@ -2,9 +2,9 @@ package springnow;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import rpc.service.CommonClientService;
-import rpc.service.CommonMovieService;
-import rpc.service.CommonRentalService;
+import springnow.service.CommonClientService;
+import springnow.service.CommonMovieService;
+import springnow.service.CommonRentalService;
 import springnow.ui.Console;
 
 public class ClientApp {

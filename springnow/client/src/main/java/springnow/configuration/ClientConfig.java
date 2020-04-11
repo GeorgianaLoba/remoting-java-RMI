@@ -3,9 +3,9 @@ package springnow.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
-import rpc.service.CommonClientService;
-import rpc.service.CommonMovieService;
-import rpc.service.CommonRentalService;
+import springnow.service.CommonClientService;
+import springnow.service.CommonMovieService;
+import springnow.service.CommonRentalService;
 
 @Configuration
 public class ClientConfig {

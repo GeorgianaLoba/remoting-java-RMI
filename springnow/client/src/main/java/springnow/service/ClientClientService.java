@@ -1,8 +1,7 @@
 package springnow.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Client;
-import rpc.service.CommonClientService;
+import springnow.domain.Client;
 
 import java.sql.SQLException;
 import java.util.Set;

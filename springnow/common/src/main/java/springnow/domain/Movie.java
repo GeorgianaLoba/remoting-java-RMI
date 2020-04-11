@@ -1,8 +1,4 @@
-package rpc.domain;
-
-
-import java.util.HashSet;
-import java.util.Set;
+package springnow.domain;
 
 public class Movie extends BaseEntity<Long> {
     private String title, director;
@@ -49,41 +45,6 @@ public class Movie extends BaseEntity<Long> {
 
     public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
-    }
-
-
-    public static String stringFromMovie(Movie movie){
-        String separator = ",";
-        StringBuilder sb = new StringBuilder();
-        sb.append(movie.getId().toString()+separator);
-        sb.append(movie.getTitle()+separator);
-        sb.append(movie.getDirector()+separator);
-        sb.append(movie.getImdbRating().toString()+separator);
-        sb.append(movie.getReleaseYear().toString());
-        return sb.toString();
-    }
-
-    public static Movie movieFromString(String str){
-        Movie movie = new Movie();
-        String[] args = str.split(",");
-        movie.setId(Long.parseLong(args[0]));
-        movie.setTitle(args[1]);
-        movie.setDirector(args[2]);
-        movie.setImdbRating(Integer.parseInt(args[3]));
-        movie.setReleaseYear(Integer.parseInt(args[4]));
-        return movie;
-    }
-
-
-    public static String stringFromSetMovies(Set<Movie> movies){
-        return movies.stream().map(Movie::stringFromMovie).reduce("",(f,s)->f+";"+s);
-    }
-
-    public static Set<Movie> movieSetFromString(String str){
-        String[] mov = str.split(";");
-        Set<Movie> movies= new HashSet<>();
-        for (String m: mov) if (m.length()> 2) movies.add(Movie.movieFromString(m));
-        return movies;
     }
 
     @Override

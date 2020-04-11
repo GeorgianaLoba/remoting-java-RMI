@@ -5,15 +5,14 @@ package springnow.repository.adapters;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcOperations;
-import rpc.domain.Client;
-import rpc.domain.exceptions.ValidatorException;
-import rpc.domain.validators.ClientValidator;
 
-import javax.swing.text.html.Option;
+import springnow.domain.Client;
+import springnow.domain.exceptions.ValidatorException;
+import springnow.domain.validators.ClientValidator;
+
 import java.sql.*;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class ClientAdapter implements Adapter<Long, Client> {
     @Autowired
@@ -35,9 +34,9 @@ public class ClientAdapter implements Adapter<Long, Client> {
     }
 
     @Override
-    public Set<Client> findAll() throws SQLException {
+    public List<Client> findAll() throws SQLException {
         String sql = "select * from clients";
-        return jdbcOperations.query(sql,(rs,row)->makeClient(rs));
+        return jdbcOperations.query(sql, (rs,row)->makeClient(rs));
     }
 
     @Override

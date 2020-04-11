@@ -1,15 +1,11 @@
 package springnow.service;
 
-//import ro.ubb.movie.domain.Client;
-//import ro.ubb.movie.repository.InterfaceRepository;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-import rpc.domain.Client;
+import springnow.domain.Client;
 import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -33,9 +29,9 @@ public class ClientService {
         repository.delete(id);
     }
 
-    public Set<Client> getAllClients() throws SQLException {
+    public List<Client> getAllClients() throws SQLException {
         Iterable<Client> clients = repository.findALL();
-        return StreamSupport.stream(clients.spliterator(), false).collect(Collectors.toSet());
+        return StreamSupport.stream(clients.spliterator(), false).collect(Collectors.toList());
     }
 
     public boolean isPresent (Long id){
