@@ -1,25 +1,19 @@
-package springnow.serverService;
-
-
+package springnow.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import rpc.domain.Client;
 import rpc.service.CommonClientService;
-import springnow.service.ClientService;
 
 import java.sql.SQLException;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 
-public class ServerClientService implements CommonClientService {
+public class ClientClientService implements CommonClientService {
     @Autowired
-    private ClientService clientService;
+    CommonClientService clientService;
 
     @Override
     public void addClient(Client client) {
-        clientService.addClient(client);
-
+         clientService.addClient(client);
     }
 
     @Override
@@ -29,7 +23,7 @@ public class ServerClientService implements CommonClientService {
 
     @Override
     public void updateClient(Client client) {
-       clientService.updateClient(client);
+        clientService.updateClient(client);
     }
 
     @Override

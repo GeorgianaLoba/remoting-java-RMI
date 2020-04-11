@@ -1,7 +1,27 @@
 package springnow.ui;
 
+import rpc.domain.Client;
+import rpc.domain.Movie;
+import rpc.domain.Rental;
+import rpc.service.CommonClientService;
+import rpc.service.CommonMovieService;
+import rpc.service.CommonRentalService;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
 public class Console {
-    //TODO
+    private CommonMovieService commonMovieService;
+    private CommonRentalService commonRentalService;
+    private CommonClientService commonClientService;
+
+    public Console(CommonMovieService commonMovieService, CommonRentalService commonRentalService, CommonClientService commonClientService) {
+        this.commonMovieService = commonMovieService;
+        this.commonRentalService = commonRentalService;
+        this.commonClientService = commonClientService;
+    }
 
     private void printMenu(){
         System.out.println("What do u wanna do: ");
@@ -202,14 +222,18 @@ public class Console {
     }
 
     private void getAllMovies() throws SQLException {
-        commonMovieService.getAll().thenAcceptAsync(movies->movies.forEach(System.out::println));
+        Set<Movie> movies = commonMovieService.getAll();
+        movies.forEach(System.out::println);
+
     }
     private void getAllClients() throws SQLException {
-        commonClientService.getAllClients().thenAcceptAsync(clients->clients.forEach(System.out::println));
+        Set<Client> clients=commonClientService.getAllClients();
+        clients.forEach(System.out::println);
     }
 
     private void getAllRentals() throws SQLException {
-        commonRentalService.getAllRentals().thenAcceptAsync(rentals->rentals.forEach(System.out::println));
+        Set<Rental> rentals=commonRentalService.getAllRentals();
+        rentals.forEach(System.out::println);
     }
 
 }
