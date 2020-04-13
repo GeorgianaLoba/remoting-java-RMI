@@ -5,6 +5,7 @@ import springnow.domain.Rental;
 import springnow.service.CommonRentalService;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
 public class ClientRentalService implements CommonRentalService {
@@ -13,13 +14,13 @@ public class ClientRentalService implements CommonRentalService {
     private CommonRentalService rentalService;
 
     @Override
-    public void deleteRentalsOfMovie(Long movieId) {
+    public void deleteRentalsOfMovie(Long movieId) throws SQLException {
         rentalService.deleteRentalsOfMovie(movieId);
 
     }
 
     @Override
-    public void deleteRentalsofClient(Long clientId) {
+    public void deleteRentalsofClient(Long clientId) throws SQLException {
 
         rentalService.deleteRentalsofClient(clientId);
     }
@@ -40,7 +41,7 @@ public class ClientRentalService implements CommonRentalService {
     }
 
     @Override
-    public Set<Rental> getAllRentals() throws SQLException {
+    public List<Rental> getAllRentals() throws SQLException {
         return rentalService.getAllRentals();
     }
 }

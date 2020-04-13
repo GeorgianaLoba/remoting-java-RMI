@@ -1,7 +1,9 @@
 package springnow.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import springnow.domain.Client;
+import springnow.repository.ClientDBRepository;
 import springnow.repository.InterfaceRepository;
 
 import java.sql.SQLException;
@@ -12,7 +14,7 @@ import java.util.stream.StreamSupport;
 
 public class ClientService {
     @Autowired
-    private InterfaceRepository<Long, Client> repository;
+    private ClientDBRepository repository;
 
 
     public void addClient(Client client)

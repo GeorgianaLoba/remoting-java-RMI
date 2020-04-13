@@ -3,17 +3,18 @@ package springnow.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.rmi.RmiServiceExporter;
-import org.springframework.stereotype.Component;
 import springnow.domain.Client;
 import springnow.domain.Movie;
 import springnow.domain.Rental;
 import springnow.domain.validators.ClientValidator;
 import springnow.domain.validators.MovieValidator;
 import springnow.domain.validators.RentalValidator;
+import springnow.repository.ClientDBRepository;
+import springnow.repository.MovieDBRepository;
 import springnow.service.CommonClientService;
 import springnow.service.CommonMovieService;
 import springnow.service.CommonRentalService;
-import springnow.repository.DBRepository;
+import springnow.repository.RentalDBRepository;
 import springnow.repository.InterfaceRepository;
 import springnow.repository.adapters.ClientAdapter;
 import springnow.repository.adapters.MovieAdapter;
@@ -103,18 +104,18 @@ public class ServerConfiguration {
     }
 
     @Bean
-    InterfaceRepository<Long, Movie> movieRepository(){
-        return new DBRepository<Long, Movie>();
+    MovieDBRepository movieRepository(){
+        return new MovieDBRepository();
     }
 
     @Bean
-    InterfaceRepository<Long, Client> clientRepository(){
-        return new DBRepository<Long, Client>();
+    ClientDBRepository clientRepository(){
+        return new ClientDBRepository();
     }
 
     @Bean
-    InterfaceRepository<Long, Rental> rentalRepository(){
-        return new DBRepository<Long, Rental>();
+    RentalDBRepository rentalRepository(){
+        return new RentalDBRepository();
     }
 
     @Bean

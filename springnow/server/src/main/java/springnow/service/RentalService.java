@@ -2,10 +2,14 @@ package springnow.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import springnow.domain.Client;
 import springnow.domain.Movie;
 import springnow.domain.Rental;
+import springnow.repository.ClientDBRepository;
 import springnow.repository.InterfaceRepository;
+import springnow.repository.MovieDBRepository;
+import springnow.repository.RentalDBRepository;
 
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -17,11 +21,11 @@ import java.util.stream.StreamSupport;
 
 public class RentalService {
     @Autowired
-    private InterfaceRepository<Long, Rental> repository;
+    private RentalDBRepository repository;
     @Autowired
-    private InterfaceRepository<Long, Movie> movieRepository;
+    private MovieDBRepository movieRepository;
     @Autowired
-    private InterfaceRepository<Long, Client> clientRepository;
+    private ClientDBRepository clientRepository;
 
 
     public List<Rental> getAllRentals() throws SQLException {

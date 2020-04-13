@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import springnow.domain.Client;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
 public class ClientClientService implements CommonClientService {
@@ -31,7 +32,7 @@ public class ClientClientService implements CommonClientService {
     }
 
     @Override
-    public Set<Client> getAllClients() throws SQLException {
+    public List<Client> getAllClients() throws SQLException {
         return clientService.getAllClients();
     }
 }

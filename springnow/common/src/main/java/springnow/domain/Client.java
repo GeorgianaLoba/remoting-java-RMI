@@ -1,6 +1,8 @@
 package springnow.domain;
 
-public class Client extends BaseEntity<Long> {
+import java.io.Serializable;
+
+public class Client extends BaseEntity<Long> implements Serializable {
     private String name;
     private String address;
     private Integer age;

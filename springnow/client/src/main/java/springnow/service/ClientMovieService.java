@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import springnow.domain.Movie;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 
 public class ClientMovieService implements CommonMovieService {
@@ -33,7 +34,7 @@ public class ClientMovieService implements CommonMovieService {
     }
 
     @Override
-    public Set<Movie> getAll() throws SQLException {
+    public List<Movie> getAll() throws SQLException {
         return movieService.getAll();
     }
 }

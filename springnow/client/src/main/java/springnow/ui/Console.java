@@ -8,6 +8,7 @@ import springnow.service.CommonMovieService;
 import springnow.service.CommonRentalService;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -221,17 +222,17 @@ public class Console {
     }
 
     private void getAllMovies() throws SQLException {
-        Set<Movie> movies = commonMovieService.getAll();
+        List<Movie> movies = commonMovieService.getAll();
         movies.forEach(System.out::println);
 
     }
     private void getAllClients() throws SQLException {
-        Set<Client> clients=commonClientService.getAllClients();
+        List<Client> clients=commonClientService.getAllClients();
         clients.forEach(System.out::println);
     }
 
     private void getAllRentals() throws SQLException {
-        Set<Rental> rentals=commonRentalService.getAllRentals();
+        List<Rental> rentals=commonRentalService.getAllRentals();
         rentals.forEach(System.out::println);
     }
 

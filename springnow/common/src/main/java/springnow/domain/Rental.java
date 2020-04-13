@@ -1,6 +1,8 @@
 package springnow.domain;
 
-public class Rental extends BaseEntity<Long> {
+import java.io.Serializable;
+
+public class Rental extends BaseEntity<Long> implements Serializable {
     private Long movieId, clientId;
 
     public Rental(){}

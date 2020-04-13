@@ -1,6 +1,8 @@
 package springnow.domain;
 
-public class Movie extends BaseEntity<Long> {
+import java.io.Serializable;
+
+public class Movie extends BaseEntity<Long> implements Serializable {
     private String title, director;
     public Integer imdbRating;
     private Integer releaseYear;

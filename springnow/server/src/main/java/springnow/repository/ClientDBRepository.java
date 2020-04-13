@@ -3,20 +3,22 @@ package springnow.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import springnow.domain.BaseEntity;
+import springnow.domain.Client;
 import springnow.domain.exceptions.ValidatorException;
 import springnow.repository.adapters.Adapter;
+import springnow.repository.adapters.ClientAdapter;
 
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Optional;
 
-public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> implements InterfaceRepository<ID, T> {
+public class ClientDBRepository implements InterfaceRepository<Long, Client> {
     @Autowired
-    private Adapter<ID, T> adapter;
+    private ClientAdapter adapter;
 
     @Override
-    public Optional<T> findOne(ID id) {
+    public Optional<Client> findOne(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("The ID must not be null");
         }
@@ -29,7 +31,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     }
 
     @Override
-    public Iterable<T> findALL() {
+    public Iterable<Client> findALL() {
         try {
             return new HashSet<>(adapter.findAll());
         } catch (SQLException e) {
@@ -39,7 +41,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     }
 
     @Override
-    public Optional<T> save(T entity) throws ValidatorException {
+    public Optional<Client> save(Client entity) throws ValidatorException {
         if (entity == null) {
             throw new IllegalArgumentException("The entity must not be null");
         }
@@ -52,7 +54,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     }
 
     @Override
-    public Optional<T> delete(ID id) {
+    public Optional<Client> delete(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("The ID must not be null");
         }
@@ -66,7 +68,7 @@ public class DBRepository<ID extends Serializable, T extends BaseEntity<ID>> imp
     }
 
     @Override
-    public Optional<T> update(T entity) throws ValidatorException {
+    public Optional<Client> update(Client entity) throws ValidatorException {
         if (entity == null) {
             throw new IllegalArgumentException("The entity must not be null");
         }
