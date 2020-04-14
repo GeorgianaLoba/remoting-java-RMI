@@ -14,12 +14,13 @@ public class ClientApp {
                         "springnow.configuration"
                 );
 
-        CommonClientService clientController = context.getBean(CommonClientService.class);
-        CommonMovieService movieController = context.getBean(CommonMovieService.class);
-        CommonRentalService rentalController = context.getBean(CommonRentalService.class);
-
-
-        Console console = new Console(movieController, rentalController, clientController);
+//        CommonClientService clientController = context.getBean(CommonClientService.class);
+//        CommonMovieService movieController = context.getBean(CommonMovieService.class);
+//        CommonRentalService rentalController = context.getBean(CommonRentalService.class);
+//
+//
+//        Console console = new Console(movieController, rentalController, clientController);
+        Console console=context.getBean(Console.class);
         console.runConsole();
     }
 }
